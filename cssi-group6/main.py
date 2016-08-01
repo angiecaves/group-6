@@ -24,13 +24,13 @@ env = jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 words_list = ['bingo','bills','bacon','tears','dream','click','stick','right','happy','dryer','taken','cruise','group','chair','water','store','brain',"youth",'about','apple','mouth','house','check','break','start','barns','start','bars','chase','train','choir','clash','cough','grape','melon','fruit','steak','fries','pepsi','sprite','chips','badge']
 
 def get_random_word(words):
-	return random.choice(words)
+    return random.choice(words)
 
 random_word = get_random_word(words_list)
 
 letters_in_random = []
 for i in range(len(random_word)):
-	letters_in_random += random_word[i]
+    letters_in_random += random_word[i]
 first_in_word = random_word[0]
 
 print "Word: " + random_word
@@ -38,41 +38,47 @@ print letters_in_random
 first_round = [first_in_word, "_ ", "_ ", "_ ", "_ "]
 print first_round
 
+
+
+
 def compare(guess):
-	logging.info("Hi")
-	if random_word == guess: #if right on first try
-		for i in range(1,6):
-			first_round[i] = guess[i]
-		count = 0
-		print "\nYou got it!"
-		print first_round
-		exit()
-	else: #if not right on first try
-		logging.info("Hi!")
-		for i in range(1,6):
-			if random_word[i] == guess[i]:
-				first_round[i] = guess[i]
-			#elif random_word[i] == guess [i+1]:
-				#first_round[i] = "()"
-			elif guess[i] in random_word and guess[i] != guess[0]:
-				first_round[i] = "("+guess[i]+")"
-		print first_round
+    logging.info("Hi")
+    if random_word == guess: #if right on first try
+        for i in range(0,5):
+            first_round[i] = guess[i]
+        count = 0
+        print "\nYou got it!"
+        print first_round
+        exit()
+    else: #if not right on first try
+        logging.info("Hi!")
+        for i in range(0,5):
+            logging.info(i)
+            logging.info(random_word)
+            logging.info(guess)
+            if random_word[i] == guess[i]:
+                first_round[i] = guess[i]
+            #elif random_word[i] == guess [i+1]:
+                #first_round[i] = "()"
+            elif guess[i] in random_word and guess[i] != guess[0]:
+                first_round[i] = "("+guess[i]+")"
+        print first_round
 
 class MainHandler(webapp2.RequestHandler):
-	# random_word = ""
-	# random_word = get_random_word(words_list)
+    # random_word = ""
+    # random_word = get_random_word(words_list)
 
-	def get(self):
-		count = 10
-		while (count > 0):
-			user_guess = self.request.get("guess")
-			compare(user_guess)
-			count = count -1
-			self.response.write(count)
-		#main_template = env.get_template('main.html')
-		#self.response.out.write(main_template.render())
-		# self.response.out.write(random_word)
-		
+    def get(self):
+        count = 10
+        while (count > 0):
+            user_guess = self.request.get("guess")
+            compare(user_guess)
+            count = count -1
+            self.response.write(count)
+        #main_template = env.get_template('main.html')
+        #self.response.out.write(main_template.render())
+        # self.response.out.write(random_word)
+        
 app = webapp2.WSGIApplication([
-	('/', MainHandler)
+    ('/', MainHandler)
 ], debug=True)
