@@ -21,7 +21,7 @@ print first_round
 def compare(guess):
 	if random_word == guess: #if right on first try
 		for i in range(1,5):
-				first_round[i] = guess[i]
+			first_round[i] = guess[i]
 		count = 0
 		print "\nYou got it!"
 		print first_round
