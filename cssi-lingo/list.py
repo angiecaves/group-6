@@ -25,15 +25,15 @@ def compare(guess):
 		count = 0
 		print "\nYou got it!"
 		print first_round
+		exit()
 	else: #if not right on first try
 		for i in range(0,5):
 			if random_word[i] == guess[i]:
 				first_round[i] = guess[i]
 			#elif random_word[i] == guess [i+1]:
 				#first_round[i] = "()"
-			else:
-				if guess[i] in random_word:
-					first_round[i] = "( )"
+			elif guess[i] in random_word and guess[i] != guess[0]:
+				first_round[i] = "("+guess[i]+")"
 		print first_round
 
 
@@ -44,5 +44,6 @@ while (count > 0):
 	count = count -1
 	print count
 
+#need to take care of letters that repeat 
 
 
