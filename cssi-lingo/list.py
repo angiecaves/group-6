@@ -10,22 +10,22 @@ random_word = get_random_word(words_list)
 letters_in_random = []
 for i in range(len(random_word)):
 	letters_in_random += random_word[i]
-	
+
 first_in_word = random_word[0]
 
-print "Word: " + random_word
-print letters_in_random
+#print "Word: " + random_word
+#print letters_in_random
 first_round = [first_in_word, "_ ", "_ ", "_ ", "_ "]
 print first_round
 
 def compare(guess):
 	if random_word == guess: #if right on first try
-		for i in range(1,5):
+		for i in range(0,5):
 			first_round[i] = guess[i]
 		count = 0
 		print "\nYou got it!"
 		print first_round
-		#exit()
+		exit()
 	else: #if not right on first try
 		for i in range(0,5):
 			if random_word[i] == guess[i]:
