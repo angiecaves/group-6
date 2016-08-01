@@ -5,12 +5,12 @@ words_list = ['bingo','bills','bacon','tears','dream','click','stick','right','h
 def get_random_word(words):
 	return random.choice(words)
 
-
 random_word = get_random_word(words_list)
 
 letters_in_random = []
 for i in range(len(random_word)):
 	letters_in_random += random_word[i]
+	
 first_in_word = random_word[0]
 
 print "Word: " + random_word
@@ -25,7 +25,7 @@ def compare(guess):
 		count = 0
 		print "\nYou got it!"
 		print first_round
-		exit()
+		#exit()
 	else: #if not right on first try
 		for i in range(0,5):
 			if random_word[i] == guess[i]:

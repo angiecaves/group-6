@@ -41,7 +41,7 @@ print first_round
 def compare(guess):
 	logging.info("Hi")
 	if random_word == guess: #if right on first try
-		for i in range(0,5):
+		for i in range(1,6):
 			first_round[i] = guess[i]
 		count = 0
 		print "\nYou got it!"
@@ -49,7 +49,7 @@ def compare(guess):
 		exit()
 	else: #if not right on first try
 		logging.info("Hi!")
-		for i in range(0,5):
+		for i in range(1,6):
 			if random_word[i] == guess[i]:
 				first_round[i] = guess[i]
 			#elif random_word[i] == guess [i+1]:
