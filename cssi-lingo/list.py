@@ -31,6 +31,8 @@ def compare(guess):
 		for i in range(1,5):
 			if random_word[i] == guess[i]:
 				first_round[i] = guess[i]
+			elif random_word[i] == guess [i+1]:
+				first_round[i] = "()" 
 		print first_round
 	return end
 
