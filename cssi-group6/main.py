@@ -69,15 +69,15 @@ class MainHandler(webapp2.RequestHandler):
     # random_word = get_random_word(words_list)
 
     def get(self):
+    	main_template = env.get_template('main.html')
+        self.response.out.write(main_template.render())
         count = 10
         while (count > 0):
             user_guess = self.request.get("guess")
             compare(user_guess)
             count = count -1
-            self.response.write(count)
-        main_template = env.get_template('main.html')
-        self.response.out.write(main_template.render())
-        self.response.out.write(random_word)
+        self.response.write("Correct word: " + random_word)
+
         
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
