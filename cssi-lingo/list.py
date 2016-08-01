@@ -18,7 +18,6 @@ print letters_in_random
 first_round = [first_in_word, "_ ", "_ ", "_ ", "_ "]
 print first_round
 
-end = 10
 def compare(guess):
 	if random_word == guess: #if right on first try
 		for i in range(1,5):
@@ -26,19 +25,20 @@ def compare(guess):
 		count = 0
 		print "\nYou got it!"
 		print first_round
-		end = 0
 	else: #if not right on first try
-		for i in range(1,5):
+		for i in range(0,5):
 			if random_word[i] == guess[i]:
 				first_round[i] = guess[i]
-			elif random_word[i] == guess [i+1]:
-				first_round[i] = "()" 
+			#elif random_word[i] == guess [i+1]:
+				#first_round[i] = "()"
+			else:
+				if guess[i] in random_word:
+					first_round[i] = "( )"
 		print first_round
-	return end
 
 
 count = 10
-while (count > 0 or end != 0):
+while (count > 0):
 	user_guess = raw_input("\nPut in your guess: ")
 	compare(user_guess)
 	count = count -1
