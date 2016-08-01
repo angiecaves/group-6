@@ -16,13 +16,17 @@
 #
 import jinja2
 import webapp2
+import random
 
 env = jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 
 class MainHandler(webapp2.RequestHandler):
+
+words_list = ['bingo','bills','bacon','tears','dream','click','stick','right','happy','dryer','taken','cruise','group','chair','water','store','brain',"youth",'about','apple','mouth','house','check','break','start','barns','start','bars','chase','train','choir','clash','cough','grape','melon','fruit','steak','fries','pepsi','sprite','chips','badge']
+
     def get(self):
         main_template = env.get_template('main.html')
-        self.response.out.write(main_template.render())
+        self.response.out.write(main_template.render(words_list))
         
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
