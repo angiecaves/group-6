@@ -75,9 +75,9 @@ class MainHandler(webapp2.RequestHandler):
             compare(user_guess)
             count = count -1
             self.response.write(count)
-        #main_template = env.get_template('main.html')
-        #self.response.out.write(main_template.render())
-        # self.response.out.write(random_word)
+        main_template = env.get_template('main.html')
+        self.response.out.write(main_template.render())
+        self.response.out.write(random_word)
         
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
