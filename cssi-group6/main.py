@@ -24,21 +24,24 @@ env = jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 def get_random_word(words):
     return random.choice(words)
 
-words_list = ['bingo','bills','bacon','tears','dream','click','stick','right','happy','dryer','taken','cruise','group','chair','water','store','brain',"youth",'about','apple','mouth','house','check','break','start','barns','start','bars','chase','train','choir','clash','cough','grape','melon','fruit','steak','fries','pepsi','sprite','chips','badge']
+words_list = ['bingo','bills','bacon','tears','dream','click','stick','right','happy','dryer','taken','group','chair','water','store','brain',"youth",'about','apple','mouth','house','check','break','start','barns','start','bars','chase','train','choir','clash','cough','grape','melon','fruit','steak','fries','pepsi','sprite','chips','badge']
 
-random_word = get_random_word(words_list)
+global random_word
+global first_in_word 
+global first_round
 
-#letters_in_random = []
-#for i in range(len(random_word)):
-    #letters_in_random += random_word[i]
-first_in_word = random_word[0]
-logging.info("Word: " + random_word) # was print
-#logging.info(letters_in_random)# was print
-first_round = [first_in_word, "_ ", "_ ", "_ ", "_ "]
-logging.info(first_round) # was print
-
+def start_game():
+    global random_word
+    global first_in_word
+    global first_round
+    random_word = get_random_word(words_list)
+    first_in_word = random_word[0]
+    first_round = [first_in_word, "_ ", "_ ", "_ ", "_ "]
 
 def compare(MainHandler, random_w,guess):
+    global random_word
+    global first_in_word
+    global first_round
     if random_w == guess: #if right on first try
         for i in range(0,5):
             first_round[i] = guess[i]
@@ -58,6 +61,8 @@ def compare(MainHandler, random_w,guess):
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
+        global random_word
+        start_game()
         count = 10
         while (count > 0):
             user_guess = self.request.get("guess", "     ") # default value so it doesnt freak
