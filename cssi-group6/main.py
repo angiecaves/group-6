@@ -46,7 +46,7 @@ def compare(random_w,guess):
         logging.info("\nYou got it!") # was print
         logging.info(first_round) # was print
         # random_word = get_random_word(words_list) # dont trust this line
-        exit()
+        #exit()
     else: #if not right on first try
         for i in range(0,5):
             if random_w[i] == guess[i]:
@@ -59,9 +59,13 @@ class MainHandler(webapp2.RequestHandler):
     def get(self):
         count = 10
         while (count > 0):
-            user_guess = self.request.get("guess", "lingo") # default value so it doesnt freak
-            compare(random_word,user_guess)
-            count = count -1
+            user_guess = self.request.get("guess", "     ") # default value so it doesnt freak
+            if (len(user_guess) == 5):
+                compare(random_word,user_guess)
+                count = count -1
+            else:
+                self.response.write("Please put in a five letter word")
+                user_guess = "     "
         game={"clue":str(first_round)}
     	main_template = env.get_template('main.html')
         self.response.out.write(main_template.render(game))
@@ -71,7 +75,6 @@ class MainHandler(webapp2.RequestHandler):
 class WinHandler(webapp2.RequestHandler):
     def get(self):
         template2 = env.get_template("win.html")
-        
         self.response.write(template2.render())
         
 app = webapp2.WSGIApplication([
