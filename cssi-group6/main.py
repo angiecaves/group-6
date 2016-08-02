@@ -44,6 +44,7 @@ def compare(guess):
         count = 0
         logging.info("\nYou got it!") # was print
         logging.info(first_round) # was print
+        # random_word = get_random_word(words_list) # dont trust this line
         exit()
     else: #if not right on first try
         for i in range(0,5):
