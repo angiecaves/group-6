@@ -33,10 +33,10 @@ for i in range(len(random_word)):
     letters_in_random += random_word[i]
 first_in_word = random_word[0]
 
-print "Word: " + random_word
-print letters_in_random
+logging.info("Word: " + random_word) # was print
+logging.info(letters_in_random) # was print
 first_round = [first_in_word, "_ ", "_ ", "_ ", "_ "]
-print first_round
+logging.info(first_round) # was print
 
 
 
@@ -47,8 +47,8 @@ def compare(guess):
         for i in range(0,5):
             first_round[i] = guess[i]
         count = 0
-        print "\nYou got it!"
-        print first_round
+        logging.info("\nYou got it!") # was print
+        logging.info(first_round) # was print
         exit()
     else: #if not right on first try
         logging.info("Hi!")
@@ -62,7 +62,7 @@ def compare(guess):
                 #first_round[i] = "()"
             elif guess[i] in random_word and guess[i] != guess[0]:
                 first_round[i] = "("+guess[i]+")"
-        print first_round
+        logging.info(first_round) # was print
 
 class MainHandler(webapp2.RequestHandler):
     # random_word = ""
@@ -73,7 +73,7 @@ class MainHandler(webapp2.RequestHandler):
         self.response.out.write(main_template.render())
         count = 10
         while (count > 0):
-            user_guess = self.request.get("guess")
+            user_guess = self.request.get("guess", "lingo") # default value so it doesnt freak
             compare(user_guess)
             count = count -1
         self.response.write("Correct word: " + random_word)
