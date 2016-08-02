@@ -27,14 +27,12 @@ def get_random_word(words):
     return random.choice(words)
 
 random_word = get_random_word(words_list)
-
 letters_in_random = []
 for i in range(len(random_word)):
     letters_in_random += random_word[i]
 first_in_word = random_word[0]
-
 logging.info("Word: " + random_word) # was print
-logging.info(letters_in_random) # was print
+logging.info(letters_in_random)# was print
 first_round = [first_in_word, "_ ", "_ ", "_ ", "_ "]
 logging.info(first_round) # was print
 
