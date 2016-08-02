@@ -12,21 +12,20 @@ var first_round
 
 function start_game(){
     random_word = get_random_word(words_list);
-    document.write(random_word)
+    //document.write(random_word)
     first_in_word = random_word[0];
     first_round = [first_in_word, "_ ", "_ ", "_ ", "_ "];
-    document.write(first_round);
+    $("output").html(first_round.toString());
 }
 
 function compare(random_w, guess){
 	if (random_w==guess){
-		document.write(guess)
+		$("output").html(guess)
 		for(i=0; i<5; i++){
 			first_round[i]=guess[i];
 		}
 		count=0;
-		document.write("You got it!");
-		document.write(first_round);
+		$("output").html(first_round);
 	}
 	else{
 		for (i=0; i<5; i++)
@@ -52,15 +51,13 @@ function doGuess(){
    var user_guess = $("#user").val();
    document.write(user_guess)
    compare(random_word,user_guess);
-   count = count--;
    redirect_to_winner();
 }
 
 function setup(){
-    start_game()
+    start_game();
     // var count = 10
-    $("#myButton").click(doGuess)
-    var game={"clue":first_round}
+    $("#myButton").click(doGuess);
 }
 
-setup()
+$(document).ready(setup)

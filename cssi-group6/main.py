@@ -25,7 +25,7 @@ class MainHandler(webapp2.RequestHandler):
     def get(self):
     	main_template = env.get_template('main.html')
         self.response.out.write(main_template.render())
-  # this might be best in a post function 
+
 
 class WinHandler(webapp2.RequestHandler):
     def get(self):
