@@ -37,8 +37,6 @@ first_round = [first_in_word, "_ ", "_ ", "_ ", "_ "]
 logging.info(first_round) # was print
 
 
-
-
 def compare(guess):
     logging.info("Hi")
     if random_word == guess: #if right on first try
@@ -68,14 +66,15 @@ class MainHandler(webapp2.RequestHandler):
 
     def get(self):
     	main_template = env.get_template('main.html')
-        self.response.out.write(main_template.render())
+        game={"clue":first_round}
+        self.response.out.write(main_template.render(game))
         count = 10
         while (count > 0):
             user_guess = self.request.get("guess", "lingo") # default value so it doesnt freak
             compare(user_guess)
             count = count -1
         self.response.write("Correct word: " + random_word) # this might be best in a post function 
-
+        
         
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
