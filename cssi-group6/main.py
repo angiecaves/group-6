@@ -28,18 +28,18 @@ words_list = ['bingo','bills','bacon','tears','dream','click','stick','right','h
 
 random_word = get_random_word(words_list)
 
-letters_in_random = []
-for i in range(len(random_word)):
-    letters_in_random += random_word[i]
+#letters_in_random = []
+#for i in range(len(random_word)):
+    #letters_in_random += random_word[i]
 first_in_word = random_word[0]
 logging.info("Word: " + random_word) # was print
-logging.info(letters_in_random)# was print
+#logging.info(letters_in_random)# was print
 first_round = [first_in_word, "_ ", "_ ", "_ ", "_ "]
 logging.info(first_round) # was print
 
 
-def compare(guess):
-    if random_word == guess: #if right on first try
+def compare(random_w,guess):
+    if random_w == guess: #if right on first try
         for i in range(0,5):
             first_round[i] = guess[i]
         count = 0
@@ -49,21 +49,21 @@ def compare(guess):
         exit()
     else: #if not right on first try
         for i in range(0,5):
-            if random_word[i] == guess[i]:
+            if random_w[i] == guess[i]:
                 first_round[i] = guess[i]
-            elif guess[i] in random_word and guess[i] != guess[0]:
+            elif guess[i] in random_w and guess[i] != guess[0]:
                 first_round[i] = "("+guess[i]+")"
         logging.info(first_round) # was print
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         count = 10
-        game={"clue":str(first_round)}
-    	main_template = env.get_template('main.html')
         while (count > 0):
             user_guess = self.request.get("guess", "lingo") # default value so it doesnt freak
-            compare(user_guess)
+            compare(random_word,user_guess)
             count = count -1
+        game={"clue":str(first_round)}
+    	main_template = env.get_template('main.html')
         self.response.out.write(main_template.render(game))
         self.response.write("Correct word: " + random_word) 
   # this might be best in a post function 
