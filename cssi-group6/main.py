@@ -75,6 +75,6 @@ class WinHandler(webapp2.RequestHandler):
         self.response.write(template2.render())
         
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainHandler),
     ('/winner', WinHandler)
 ], debug=True)
