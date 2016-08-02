@@ -21,44 +21,6 @@ import logging
 
 env = jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 
-def get_random_word(words):
-    return random.choice(words)
-
-words_list = ['bingo','bills','bacon','tears','dream','click','stick','right','happy','dryer','taken','group','chair','water','store','brain',"youth",'about','apple','mouth','house','check','break','start','barns','start','bars','chase','train','choir','clash','cough','grape','melon','fruit','steak','fries','pepsi','sprite','chips','badge']
-
-global random_word
-global first_in_word 
-global first_round
-
-def start_game():
-    global random_word
-    global first_in_word
-    global first_round
-    random_word = get_random_word(words_list)
-    first_in_word = random_word[0]
-    first_round = [first_in_word, "_ ", "_ ", "_ ", "_ "]
-
-def compare(MainHandler, random_w,guess):
-    global random_word
-    global first_in_word
-    global first_round
-    if random_w == guess: #if right on first try
-        for i in range(0,5):
-            first_round[i] = guess[i]
-        count = 0
-        logging.info("\nYou got it!") # was print
-        logging.info(first_round) # was print
-        # random_word = get_random_word(words_list) # dont trust this line
-        #exit()
-        MainHandler.redirect("/winner")
-    else: #if not right on first try
-        for i in range(0,5):
-            if random_w[i] == guess[i]:
-                first_round[i] = guess[i]
-            elif guess[i] in random_w and guess[i] != guess[0]:
-                first_round[i] = "("+guess[i]+")"
-        logging.info(first_round) # was print
-
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         global random_word
