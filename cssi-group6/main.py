@@ -23,21 +23,8 @@ env = jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        global random_word
-        start_game()
-        count = 10
-        while (count > 0):
-            user_guess = self.request.get("guess", "     ") # default value so it doesnt freak
-            if (len(user_guess) == 5):
-                compare(self,random_word,user_guess)
-                count = count -1
-            else:
-                self.response.write("Please put in a five letter word")
-                user_guess = "     "
-        game={"clue":str(first_round)}
     	main_template = env.get_template('main.html')
-        self.response.out.write(main_template.render(game))
-        self.response.write("Correct word: " + random_word) 
+        self.response.out.write(main_template.render())
   # this might be best in a post function 
 
 class WinHandler(webapp2.RequestHandler):

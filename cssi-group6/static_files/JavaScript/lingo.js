@@ -10,12 +10,14 @@ var first_round
 
 function start_game(){
     random_word = get_random_word(words_list);
+    console.log(random_word)
     first_in_word = random_word[0];
     first_round = [first_in_word, "_ ", "_ ", "_ ", "_ "];
+    console.log(first_round);
 }
 
 function compare(random_w, guess){
-	if random_w==guess{
+	if (random_w==guess){
 		for(i=0; i<5; i++){
 			first_round[i]=guess[i];
 		}
@@ -37,3 +39,30 @@ function compare(random_w, guess){
 		}
 	}
 }
+
+function redirect_to_winner(){
+	window.location.replace("/winner")
+}
+
+function setup(){
+    start_game()
+    var count = 10
+    while (count > 0)
+    {
+        var user_guess = document.getElementById("user");
+        if (len(user_guess) == 5)
+        {
+            compare(random_word,user_guess);
+            count = count--;
+            redirect_to_winner();
+        }
+        else
+        {
+            console.log("Please put in a five letter word");
+            user_guess = "     ";
+        }
+    }
+    var game={"clue":first_round}
+}
+
+$(document).ready(setup)
