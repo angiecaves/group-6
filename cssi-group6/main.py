@@ -21,10 +21,10 @@ import logging
 
 env = jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 
-words_list = ['bingo','bills','bacon','tears','dream','click','stick','right','happy','dryer','taken','cruise','group','chair','water','store','brain',"youth",'about','apple','mouth','house','check','break','start','barns','start','bars','chase','train','choir','clash','cough','grape','melon','fruit','steak','fries','pepsi','sprite','chips','badge']
-
 def get_random_word(words):
     return random.choice(words)
+
+words_list = ['bingo','bills','bacon','tears','dream','click','stick','right','happy','dryer','taken','cruise','group','chair','water','store','brain',"youth",'about','apple','mouth','house','check','break','start','barns','start','bars','chase','train','choir','clash','cough','grape','melon','fruit','steak','fries','pepsi','sprite','chips','badge']
 
 random_word = get_random_word(words_list)
 letters_in_random = []
@@ -38,7 +38,6 @@ logging.info(first_round) # was print
 
 
 def compare(guess):
-    logging.info("Hi")
     if random_word == guess: #if right on first try
         for i in range(0,5):
             first_round[i] = guess[i]
@@ -47,15 +46,9 @@ def compare(guess):
         logging.info(first_round) # was print
         exit()
     else: #if not right on first try
-        logging.info("Hi!")
         for i in range(0,5):
-            logging.info(i)
-            logging.info(random_word)
-            logging.info(guess)
             if random_word[i] == guess[i]:
                 first_round[i] = guess[i]
-            #elif random_word[i] == guess [i+1]:
-                #first_round[i] = "()"
             elif guess[i] in random_word and guess[i] != guess[0]:
                 first_round[i] = "("+guess[i]+")"
         logging.info(first_round) # was print
@@ -65,15 +58,16 @@ class MainHandler(webapp2.RequestHandler):
     # random_word = get_random_word(words_list)
 
     def get(self):
-    	main_template = env.get_template('main.html')
-        game={"clue":first_round}
-        self.response.out.write(main_template.render(game))
+        game={"clue":str(first_round)}
         count = 10
         while (count > 0):
             user_guess = self.request.get("guess", "lingo") # default value so it doesnt freak
             compare(user_guess)
             count = count -1
-        self.response.write("Correct word: " + random_word) # this might be best in a post function 
+    	main_template = env.get_template('main.html')
+        self.response.out.write(main_template.render(game))
+        sself.response.write("Correct word: " + random_word) 
+  # this might be best in a post function 
         
         
 app = webapp2.WSGIApplication([
