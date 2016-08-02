@@ -76,7 +76,7 @@ class MainHandler(webapp2.RequestHandler):
             user_guess = self.request.get("guess", "lingo") # default value so it doesnt freak
             compare(user_guess)
             count = count -1
-        self.response.write("Correct word: " + random_word)
+        self.response.write("Correct word: " + random_word) # this might be best in a post function 
 
         
 app = webapp2.WSGIApplication([
