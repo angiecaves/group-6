@@ -65,8 +65,8 @@ class MainHandler(webapp2.RequestHandler):
     # random_word = get_random_word(words_list)
 
     def get(self):
-    	main_template = env.get_template('main.html')
         game={"clue":first_round}
+    	main_template = env.get_template('main.html')
         self.response.out.write(main_template.render(game))
         count = 10
         while (count > 0):
