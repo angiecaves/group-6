@@ -54,11 +54,8 @@ def compare(guess):
         logging.info(first_round) # was print
 
 class MainHandler(webapp2.RequestHandler):
-    # random_word = ""
-    # random_word = get_random_word(words_list)
-
     def get(self):
-        game={"clue":str(first_round)}
+        game={"clue":first_round}
         count = 10
         while (count > 0):
             user_guess = self.request.get("guess", "lingo") # default value so it doesnt freak
@@ -66,7 +63,7 @@ class MainHandler(webapp2.RequestHandler):
             count = count -1
     	main_template = env.get_template('main.html')
         self.response.out.write(main_template.render(game))
-        sself.response.write("Correct word: " + random_word) 
+        self.response.write("Correct word: " + random_word) 
   # this might be best in a post function 
         
         
