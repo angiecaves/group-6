@@ -27,6 +27,7 @@ def get_random_word(words):
 words_list = ['bingo','bills','bacon','tears','dream','click','stick','right','happy','dryer','taken','cruise','group','chair','water','store','brain',"youth",'about','apple','mouth','house','check','break','start','barns','start','bars','chase','train','choir','clash','cough','grape','melon','fruit','steak','fries','pepsi','sprite','chips','badge']
 
 random_word = get_random_word(words_list)
+
 letters_in_random = []
 for i in range(len(random_word)):
     letters_in_random += random_word[i]
@@ -56,13 +57,13 @@ def compare(guess):
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        game={"clue":first_round}
         count = 10
+        game={"clue":str(first_round)}
+    	main_template = env.get_template('main.html')
         while (count > 0):
             user_guess = self.request.get("guess", "lingo") # default value so it doesnt freak
             compare(user_guess)
             count = count -1
-    	main_template = env.get_template('main.html')
         self.response.out.write(main_template.render(game))
         self.response.write("Correct word: " + random_word) 
   # this might be best in a post function 
