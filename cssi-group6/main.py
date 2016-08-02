@@ -67,8 +67,14 @@ class MainHandler(webapp2.RequestHandler):
         self.response.out.write(main_template.render(game))
         self.response.write("Correct word: " + random_word) 
   # this might be best in a post function 
+
+class WinHandler(webapp2.RequestHandler):
+    def get(self):
+        template2 = env.get_template("win.html")
         
+        self.response.write(template2.render())
         
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
+    ('/winner', WinHandler)
 ], debug=True)
