@@ -1,5 +1,7 @@
 function get_random_word(words){
-    return random.choice(words);
+    var randomIndex = Math.floor(Math.random() * words.length); 
+	var randomElement = words[randomIndex];
+	return randomElement;
 }
 
 var words_list = ['bingo','bills','bacon','tears','dream','click','stick','right','happy','dryer','taken','group','chair','water','store','brain',"youth",'about','apple','mouth','house','check','break','start','barns','start','bars','chase','train','choir','clash','cough','grape','melon','fruit','steak','fries','pepsi','sprite','chips','badge'];
@@ -18,6 +20,7 @@ function start_game(){
 
 function compare(random_w, guess){
 	if (random_w==guess){
+		console.log(guess)
 		for(i=0; i<5; i++){
 			first_round[i]=guess[i];
 		}
@@ -26,7 +29,8 @@ function compare(random_w, guess){
 		console.log(first_round);
 	}
 	else{
-		for (i=0; i<5; i++){
+		for (i=0; i<5; i++)
+		{
 			if (random_w[i]==guess[i])
 			{
 				first_round[i]=guess[i];
@@ -44,25 +48,19 @@ function redirect_to_winner(){
 	window.location.replace("/winner")
 }
 
+function doGuess(){
+   var user_guess = $("#user").val();
+   console.log(user_guess)
+   compare(random_word,user_guess);
+   count = count--;
+   redirect_to_winner();
+}
+
 function setup(){
     start_game()
-    var count = 10
-    while (count > 0)
-    {
-        var user_guess = document.getElementById("user");
-        if (len(user_guess) == 5)
-        {
-            compare(random_word,user_guess);
-            count = count--;
-            redirect_to_winner();
-        }
-        else
-        {
-            console.log("Please put in a five letter word");
-            user_guess = "     ";
-        }
-    }
+    // var count = 10
+    $("#myButton").click(doGuess)
     var game={"clue":first_round}
 }
 
-$(document).ready(setup)
+setup()
