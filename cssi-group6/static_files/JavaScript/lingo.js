@@ -18,12 +18,12 @@ function start_game(){
     //document.write(random_word)
     first_in_word = random_word[0];
     first_round = [first_in_word, "_ ", "_ ", "_ ", "_ "];
-    $("#output").html(first_round.toString());
+    $("#output").html(first_round);
 }
 
 function redirect_to_winner(){
 	window.location.replace("/winner")
-	$("#playWin").html(first_round)
+	$("#playWin").html(first_round);
 }
 
 function compare(random_w, guess){
