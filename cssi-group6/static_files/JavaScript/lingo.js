@@ -18,6 +18,10 @@ function start_game(){
     $("#output").html(first_round.toString());
 }
 
+function redirect_to_winner(){
+	window.location.replace("/winner")
+}
+
 function compare(random_w, guess){
 	if (random_w==guess){
 		$("#output").html(guess)
@@ -26,6 +30,7 @@ function compare(random_w, guess){
 		}
 		count=0;
 		$("#output").html(first_round);
+		redirect_to_winner();
 	}
 	else{
 		for (i=0; i<5; i++)
@@ -36,22 +41,21 @@ function compare(random_w, guess){
 			}
 		    else if (random_w.includes(guess[i]) && guess[i] != guess[0])
 			{
-				first_round[i]="("+guess+")";
+				first_round[i]="("+guess[i]+")";
 			}
 		$("#output").html(first_round);
 		}
 	}
 }
 
-function redirect_to_winner(){
-	window.location.replace("/winner")
+function redirect_to_original(){
+	history.back();
 }
 
 function doGuess(){
    var user_guess = $("#user").val();
    $("#output").html(user_guess)
    compare(random_word,user_guess);
-   redirect_to_winner();
 }
 
 function setup(){
