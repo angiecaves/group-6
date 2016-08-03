@@ -22,8 +22,8 @@ function start_game(){
 }
 
 function redirect_to_winner(){
-	window.location.replace("/winner")
-	$("#playWin").html(first_round);
+    $("#playWin").html("Correct word: " + first_round);
+	window.setTimeout(window.location.replace("/winner"),300000);
 }
 
 function compare(random_w, guess){
@@ -40,7 +40,7 @@ function compare(random_w, guess){
 			{
 				first_round[i]=guess[i];
 			}
-		    else if (random_w.includes(guess[i]) && guess[i] != guess[0])
+		    else if (random_w.includes(guess[i]) == true && guess[i] != guess[0] && random_w[i] != guess[i])
 			{
 				first_round[i]="("+guess[i]+")";
 			}
