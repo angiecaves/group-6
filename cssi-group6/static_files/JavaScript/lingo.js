@@ -43,14 +43,15 @@ function compare(random_w, guess){
 		    else if (random_w.includes(guess[i]) == true && guess[i] != guess[0] && random_w[i] != guess[i])
 			{
 				first_round[i]="("+guess[i]+")";
+
 			}
 
 		$("#output").html(first_round);
 		}
+		count = count -1;
+		console.log(count);
 	}
 
-	count = count - 1;
-	console.log(count);
 }
 
 function doGuess(){
