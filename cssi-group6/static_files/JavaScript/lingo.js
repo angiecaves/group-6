@@ -8,9 +8,11 @@ var words_list = ['bingo','bills','bacon','tears','dream','click','stick','right
 
 var random_word;
 var first_in_word;
-var first_round
+var first_round;
+var count;
 
 function start_game(){
+	count = 10
     random_word = get_random_word(words_list);
     console.log(random_word);
     //document.write(random_word)
@@ -42,9 +44,13 @@ function compare(random_w, guess){
 			{
 				first_round[i]="("+guess[i]+")";
 			}
+
 		$("#output").html(first_round);
 		}
 	}
+
+	count = count - 1;
+	console.log(count);
 }
 
 function doGuess(){
@@ -57,6 +63,12 @@ function doGuess(){
    {
    $("#output").html(user_guess)
    compare(random_word,user_guess);
+   }
+
+   if (count < 1)
+   {
+   	 alert("YOU LOSE");
+   	 window.location.reload();
    }
 }
 
