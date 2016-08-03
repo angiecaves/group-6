@@ -26,6 +26,10 @@ class MainHandler(webapp2.RequestHandler):
     	main_template = env.get_template('main.html')
         self.response.out.write(main_template.render())
 
+class RulesHandler(webapp2.RequestHandler):
+    def get(self):
+        template3=env.get_template('rules.html')
+        self.response.out.write(template3.render())
 
 class WinHandler(webapp2.RequestHandler):
     def get(self):
@@ -33,6 +37,7 @@ class WinHandler(webapp2.RequestHandler):
         self.response.write(template2.render())
         
 app = webapp2.WSGIApplication([
-    ('/', MainHandler),
+    ('/', RulesHandler),
+    ('/game', MainHandler),
     ('/winner', WinHandler)
 ], debug=True)
