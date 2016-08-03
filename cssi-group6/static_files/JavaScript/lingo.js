@@ -4,7 +4,7 @@ function get_random_word(words){
 	return randomElement;
 }
 
-var words_list = ['bingo','bills','bacon','tears','dream','click','stick','right','happy','taken','group','chair','water','store','brain',"youth",'about','apple','mouth','house','check','break','barns','start','chase','train','choir','clash','cough','grape','melon','fruit','steak','fries','chips','badge'];
+var words_list = ['bingo','bills','bacon','tears','dream','click','stick','right','happy','taken','group','chair','water','store','brain',"youth",'about','apple','mouth','house','check','break','barns','start','chase','train','choir','clash','cough','grape','melon','fruit','steak','fries','chips','badge','watch','trunk','tiger','stage'];
 
 var random_word;
 var first_in_word;
