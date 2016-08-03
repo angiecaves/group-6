@@ -13,6 +13,12 @@
 	<img src="https://upload.wikimedia.org/wikipedia/en/a/a3/Lingo_logo.jpg" style = "width: 250px; height: 100px;">
 	<div id = "output"></div>
 	<form method="get" action="">
+	<script>
+        $("form").submit(function(e) {
+    	e.preventDefault();
+    	redeemTokens();
+});
+	</script>
 	<h3>Guess the word: <input type="text" id = "user" name="guess" /></h3>
 	<button type = "button" id = "myButton">Submit guess</button>
 	</form>
