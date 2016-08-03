@@ -32,7 +32,7 @@ function compare(random_w, guess){
 
 	if (random_w==guess){
 		for(i=0; i<5; i++){
-			first_round[i]=guess[i];
+			first_round[i]="[" + guess[i] + "]";
 		}
 		redirect_to_winner();
 	}
@@ -41,7 +41,7 @@ function compare(random_w, guess){
 		{
 			if (random_w[i]==guess[i])
 			{
-				first_round[i]=guess[i];
+				first_round[i]="[" + guess[i] + "]";
 			}
 		    else if (random_w.includes(guess[i]) == true && guess[i] != guess[0] && random_w[i] != guess[i])
 			{
