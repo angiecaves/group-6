@@ -1,5 +1,5 @@
 body {
-	background-color: #1c1cd0;
+	background-color: #000033;
 	color:white;
 	text-align: center;
 	font-family: Helvetica Narrow, sans-serif;
@@ -16,6 +16,15 @@ h1 {
 h3 {
 	font-weight: normal;
 	font-size: 40px;
+}
+
+img {
+	background-color: #1c1cd0;
+	opacity: 0.9;
+}
+
+img:hover{
+	opacity: 1.0;
 }
 
 #user {
