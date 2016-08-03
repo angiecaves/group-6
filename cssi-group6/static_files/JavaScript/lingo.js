@@ -13,6 +13,7 @@ var count;
 
 function start_game(){
 	count = 10
+	$("#boxed").html(count);
     random_word = get_random_word(words_list);
     console.log(random_word);
     //document.write(random_word)
@@ -23,10 +24,12 @@ function start_game(){
 
 function redirect_to_winner(){
     $("#playWin").html("Correct word: " + first_round);
-	window.setTimeout(window.location.replace("/winner"),300000);
+	window.location.replace("/winner");
 }
 
+
 function compare(random_w, guess){
+
 	if (random_w==guess){
 		for(i=0; i<5; i++){
 			first_round[i]=guess[i];
@@ -45,11 +48,10 @@ function compare(random_w, guess){
 				first_round[i]="("+guess[i]+")";
 
 			}
-
 		$("#output").html(first_round);
 		}
 		count = count -1;
-		console.log(count);
+		$("#boxed").html(count);
 	}
 
 }

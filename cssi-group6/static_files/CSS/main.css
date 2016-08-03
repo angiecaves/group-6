@@ -32,6 +32,14 @@ img:hover{
 	width: 200px;
 }
 
+#boxed {
+	border: 2px solid white;
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 200px;
+}
+
 input {
 	font-size: 25px;
 
