@@ -2,7 +2,7 @@ body {
 	background-color: #000033;
 	color:white;
 	text-align: center;
-	font-family: Helvetica Narrow, sans-serif;
+	font-family: Gill Sans, sans-serif;
 	font-weight: lighter;
 	font-size: 40px;
 }
@@ -42,5 +42,12 @@ img:hover{
 
 input {
 	font-size: 25px;
+}
 
+button {
+	font-family: Lucida Sans Unicode, sans-serif;
+	font-size: 20px;
+	width:12em;
+	height:2em;
+	border-radius:15px;
 }
