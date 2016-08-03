@@ -4,7 +4,7 @@ function get_random_word(words){
 	return randomElement;
 }
 
-var words_list = ['bingo','bills','bacon','tears','dream','click','stick','right','happy','dryer','taken','group','chair','water','store','brain',"youth",'about','apple','mouth','house','check','break','barns','start','bars','chase','train','choir','clash','cough','grape','melon','fruit','steak','fries','pepsi','chips','badge'];
+var words_list = ['bingo','bills','bacon','tears','dream','click','stick','right','happy','taken','group','chair','water','store','brain',"youth",'about','apple','mouth','house','check','break','barns','start','chase','train','choir','clash','cough','grape','melon','fruit','steak','fries','chips','badge'];
 
 var random_word;
 var first_in_word;
@@ -21,6 +21,7 @@ function start_game(){
 
 function redirect_to_winner(){
 	window.location.replace("/winner")
+	$("#playWin").html(first_round)
 }
 
 function compare(random_w, guess){
@@ -46,14 +47,17 @@ function compare(random_w, guess){
 	}
 }
 
-function redirect_to_original(){
-	history.back();
-}
-
 function doGuess(){
    var user_guess = $("#user").val();
+   if (user_guess.length != 5)
+   {
+   	 alert("Please enter a five letter word!!")
+   }
+   else
+   {
    $("#output").html(user_guess)
    compare(random_word,user_guess);
+   }
 }
 
 function setup(){
