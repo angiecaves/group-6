@@ -15,17 +15,17 @@ function start_game(){
     //document.write(random_word)
     first_in_word = random_word[0];
     first_round = [first_in_word, "_ ", "_ ", "_ ", "_ "];
-    $("output").html(first_round.toString());
+    $("#output").html(first_round.toString());
 }
 
 function compare(random_w, guess){
 	if (random_w==guess){
-		$("output").html(guess)
+		$("#output").html(guess)
 		for(i=0; i<5; i++){
 			first_round[i]=guess[i];
 		}
 		count=0;
-		$("output").html(first_round);
+		$("#output").html(first_round);
 	}
 	else{
 		for (i=0; i<5; i++)
@@ -38,7 +38,7 @@ function compare(random_w, guess){
 			{
 				first_round[i]="("+guess+")";
 			}
-		document.write(first_round);
+		$("#output").html(first_round);
 		}
 	}
 }
@@ -49,7 +49,7 @@ function redirect_to_winner(){
 
 function doGuess(){
    var user_guess = $("#user").val();
-   document.write(user_guess)
+   $("#output").html(user_guess)
    compare(random_word,user_guess);
    redirect_to_winner();
 }
