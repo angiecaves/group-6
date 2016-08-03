@@ -1,8 +1,18 @@
+<link href="/static_files/CSS/main.css" rel="stylesheet">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src = "/static_files/JavaScript/lingo.js"></script>
+<script type="text/javascript">
+        function Redirect() {
+               window.location="http://localhost:16080/";
+            }
+</script>
+
 <html>
 <title>YOU WIN LINGO</title>
 	<body>
 		<h1>You won!</h1>
 			<form method="get" action="">
-			<p><input type = "submit" id = "winner" value = "Play Again"></p>
+			<input type="button" value="Play Again" onclick="Redirect();"
 	</body>
 </html>
