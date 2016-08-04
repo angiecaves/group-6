@@ -4,7 +4,7 @@ function get_random_word(words){
     return randomElement;
 }
 
-var words_list = ['bingo','bacon','tears','dream','click','stick','right','taken','group','chair','water','store','brain',"youth",'about','apple','mouth','house','check','break','barns','start','chase','train','choir','clash','cough','grape','melon','fruit','steak','fries','chips','badge','watch','trunk','tiger','stage','happy'];
+var words_list = ['bingo','bacon','tears','dream','click','stick','right','taken','group','chair','water','store','brain',"youth",'about','mouth','house','check','break','barns','start','chase','train','choir','clash','cough','grape','melon','fruit','steak','fries','chips','badge','watch','trunk','tiger','stage'];
 
 var random_word;
 var first_in_word;
@@ -34,6 +34,8 @@ function double_letter(str, letter){
 }
 
 function compare(random_w, guess){
+    var in_random=random_w.replace(/[^random_w[i]]/g, "").length;
+    var in_guess = guess.replace(/[^random_w[i]]/g, "").length;
     if (random_w==guess){
         for(i=0; i<5; i++){
             first_round[i]="[" + guess[i] + "]";
@@ -49,8 +51,6 @@ function compare(random_w, guess){
             }
             else if (random_w.includes(guess[i]) == true && first_round.toString().indexOf("[" + guess[i] + "]") == -1)
             {
-                var in_random=random_w.replace(/[^random_w[i]]/g, "").length;
-                var in_guess = guess.replace(/[^random_w[i]]/g, "").length;
                 if (in_random >= in_guess)
                 {
                     first_round[i]="("+guess[i]+")";
