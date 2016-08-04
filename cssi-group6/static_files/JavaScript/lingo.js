@@ -60,7 +60,9 @@ function compare(random_w, guess){
             {
                 first_round[i]="("+guessed_letter+")";
             }
-        $("#output").html(first_round);
+         $("#output").html(first_round);
+
+
         }
         count = count -1;
         $("#boxed").html(count);
@@ -75,8 +77,10 @@ function doGuess(){
    }
    else
    {
-      $("#output").html(user_guess)
+      $("#failure").append("<br>" + user_guess);
+      // $("#output").html(user_guess)
       compare(random_word,user_guess);
+      
    }
 
    if (count < 1)
