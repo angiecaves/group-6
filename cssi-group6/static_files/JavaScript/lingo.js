@@ -61,36 +61,6 @@ function compare(random_w, guess){
         $("#boxed").html(count);
     }
 
-function compare(random_w, guess){
-
-	if (random_w==guess){
-		for(i=0; i<5; i++){
-			first_round[i]="[" + guess[i] + "]";
-		}
-		redirect_to_winner();
-	}
-	else{
-		for (i=0; i<5; i++)
-		{
-			if (random_w[i]==guess[i])
-			{
-				first_round[i]="[" + guess[i] + "]";
-			}
-		    else if (random_w.includes(guess[i]) == true && first_round.toString().indexOf("[") == -1 /*&& is_double_letter(random_w,guess[i])==false*/)
-			{
-				var in_random=random_w.replace(/[^random_w[i]]/g, "").length;
-				var in_guess = guess.replace(/[^random_w[i]]/g, "").length;
-				if(in_random>=in_guess)
-				{
-					first_round[i]="("+guess[i]+")";
-				}
-			}
-		$("#output").html(first_round);
-		}
-		count = count -1;
-		$("#boxed").html(count);
-	}
-
 function doGuess(){
    var user_guess = $("#user").val();
    if (user_guess.length != 5)
