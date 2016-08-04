@@ -85,7 +85,7 @@ function doGuess(){
 
    if (count < 1)
    {
-     alert("YOU LOSE");
+     alert("YOU LOSE the correct word was: " + random_word );
      window.location.reload();
    }
 }
