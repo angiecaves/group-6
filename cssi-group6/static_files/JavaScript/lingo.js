@@ -10,9 +10,10 @@ var random_word;
 var first_in_word;
 var first_round;
 var count;
+var score = 0; 
 
 function start_game(){
-	count = 10
+	count = 5;
 	$("#boxed").html(count);
     random_word = get_random_word(words_list);
     console.log(random_word);
@@ -53,7 +54,6 @@ function compare(random_w, guess){
 		count = count -1;
 		$("#boxed").html(count);
 	}
-
 }
 
 
