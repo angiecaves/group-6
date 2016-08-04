@@ -12,6 +12,7 @@ var first_round;
 var count;
 var score = 0; 
 
+
 function start_game(){
 	count = 5;
 	$("#boxed").html(count);
