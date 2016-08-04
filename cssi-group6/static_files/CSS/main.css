@@ -40,6 +40,15 @@ img:hover{
 	width: 100px;
 }
 
+#scoreBox
+{
+	border: 2px solid white;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100px;
+}
+
 
 input {
 	font-size: 25px;

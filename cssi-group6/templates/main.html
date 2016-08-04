@@ -13,6 +13,7 @@
 	<img src="https://upload.wikimedia.org/wikipedia/en/a/a3/Lingo_logo.jpg" style = "width: 250px; height: 100px;">
 	<div id = "output"></div>
 	<div id = "boxed"></div>
+	<div id = "scoreBox"></div>
 	<form method="get" action="">
 	
 	<script>
@@ -21,7 +22,7 @@
 		});
 	</script>
 
-	<h3>Guess the word: <input type="text" id = "user" name="guess" /></h3>
+	<h3>Guess the word: <input type="text" id = "user" name="guess" onkeypress="if (event.keyCode == 13) {doGuess()}" /></h3>
 	<button type = "button" id = "myButton">Submit Guess</button>
 	</form>
   </body>

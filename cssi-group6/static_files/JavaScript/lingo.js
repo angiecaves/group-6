@@ -10,9 +10,10 @@ var random_word;
 var first_in_word;
 var first_round;
 var count;
+var score = 0; 
 
 function start_game(){
-	count = 10
+	count = 5;
 	$("#boxed").html(count);
     random_word = get_random_word(words_list);
     console.log(random_word);
@@ -61,18 +62,9 @@ function compare(random_w, guess){
 		count = count -1;
 		$("#boxed").html(count);
 	}
-
 }
 
-// function handleKeyPress(e){
-// 	$("form").submit(function(e) {
-//     	e.preventDefault();
-//     });
-//  	var key=e.keyCode || e.which;
-//   	if (key==13){
-//      	doGuess();
-//   }
-// }
+
 
 function doGuess(){
    var user_guess = $("#user").val();
@@ -96,6 +88,7 @@ function doGuess(){
 function setup(){
     start_game();
     // var count = 10
+
     $("#myButton").click(doGuess);
 }
 
