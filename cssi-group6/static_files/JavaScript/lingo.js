@@ -56,15 +56,7 @@ function compare(random_w, guess){
 
 }
 
-// function handleKeyPress(e){
-// 	$("form").submit(function(e) {
-//     	e.preventDefault();
-//     });
-//  	var key=e.keyCode || e.which;
-//   	if (key==13){
-//      	doGuess();
-//   }
-// }
+
 
 function doGuess(){
    var user_guess = $("#user").val();
@@ -88,7 +80,8 @@ function doGuess(){
 function setup(){
     start_game();
     // var count = 10
-    $("#myButton").click(doGuess);
+    $("#myButton").click(doGuess); 	
+
 
 }
 
