@@ -43,7 +43,7 @@ function compare(random_w, guess){
 			{
 				first_round[i]="[" + guess[i] + "]";
 			}
-		    else if (random_w.includes(guess[i]) == true && guess[i] != guess[0] && random_w[i] != guess[i])
+		    else if (random_w.includes(guess[i]) == true)
 			{
 				first_round[i]="("+guess[i]+")";
 
