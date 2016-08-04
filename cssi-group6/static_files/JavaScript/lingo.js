@@ -81,8 +81,6 @@ function setup(){
     start_game();
     // var count = 10
     $("#myButton").click(doGuess); 	
-
-
 }
 
 $(document).ready(setup)
