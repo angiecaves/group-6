@@ -4,7 +4,7 @@ function get_random_word(words){
 	return randomElement;
 }
 
-var words_list = ['bingo','bills','bacon','tears','dream','click','stick','right','happy','taken','group','chair','water','store','brain',"youth",'about','apple','mouth','house','check','break','barns','start','chase','train','choir','clash','cough','grape','melon','fruit','steak','fries','chips','badge','watch','trunk','tiger','stage'];
+var words_list = ['bingo','bacon','tears','dream','click','stick','right','taken','group','chair','water','store','brain',"youth",'about','apple','mouth','house','check','break','barns','start','chase','train','choir','clash','cough','grape','melon','fruit','steak','fries','chips','badge','watch','trunk','tiger','stage','happy'];
 
 var random_word;
 var first_in_word;
@@ -27,6 +27,10 @@ function redirect_to_winner(){
 	window.location.replace("/winner");
 }
 
+function double_letter(str, letter){
+		x=str.replace(/[^letter]/g, "").length;
+		return x;
+}
 
 function compare(random_w, guess){
 
@@ -43,10 +47,14 @@ function compare(random_w, guess){
 			{
 				first_round[i]="[" + guess[i] + "]";
 			}
-		    else if (random_w.includes(guess[i]) == true)
+		    else if (random_w.includes(guess[i]) == true && first_round.toString().indexOf("[") == -1)
 			{
-				first_round[i]="("+guess[i]+")";
-
+				var in_random=random_w.replace(/[^random_w[i]]/g, "").length;
+				var in_guess = guess.replace(/[^random_w[i]]/g, "").length;
+				if(in_random>=in_guess)
+				{
+					first_round[i]="("+guess[i]+")";
+				}
 			}
 		$("#output").html(first_round);
 		}
@@ -89,7 +97,6 @@ function setup(){
     start_game();
     // var count = 10
     $("#myButton").click(doGuess);
-
 }
 
 $(document).ready(setup)
