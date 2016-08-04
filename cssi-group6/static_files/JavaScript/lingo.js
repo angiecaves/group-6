@@ -58,7 +58,6 @@ function compare(random_w, guess){
     }
 }
 
-
 function doGuess(){
    var user_guess = $("#user").val();
    if (user_guess.length != 5)
