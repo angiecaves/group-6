@@ -28,28 +28,37 @@ function redirect_to_winner(){
     window.location.replace("/winner");
 }
 
+function in_word(word, letter)
+{
+    var instances = 0;
+    for (var i = 0; i < word.length;i++)
+    {
+       if (word[i] == letter)
+       {
+         instances++; 
+       }
+    }
+    return instances;
+}
+
 function compare(random_w, guess){
-    var in_random=random_w.replace(/[^random_w[i]]/g, "").length;
-    var in_guess = guess.replace(/[^random_w[i]]/g, "").length;
     if (random_w==guess){
         for(i=0; i<5; i++){
-            first_round[i]="[" + guess[i] + "]";
+            first_round[i]=guess[i];
         }
         redirect_to_winner();
     }
     else{
         for (i=0; i<5; i++)
         {
-            if (random_w[i]==guess[i])
+            var guessed_letter = guess[i];
+            if (random_w[i]==guessed_letter)
             {
-                first_round[i]="[" + guess[i] + "]";
+                first_round[i]=guessed_letter;
             }
-            else if (random_w.includes(guess[i]) == true)
+            else if (in_word(random_w,guessed_letter) > in_word(first_round,guessed_letter))
             {
-                if (in_random >= in_guess)
-                {
-                    first_round[i]="("+guess[i]+")";
-                }
+                first_round[i]="("+guessed_letter+")";
             }
         $("#output").html(first_round);
         }
