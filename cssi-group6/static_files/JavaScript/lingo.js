@@ -56,6 +56,16 @@ function compare(random_w, guess){
 
 }
 
+// function handleKeyPress(e){
+// 	$("form").submit(function(e) {
+//     	e.preventDefault();
+//     });
+//  	var key=e.keyCode || e.which;
+//   	if (key==13){
+//      	doGuess();
+//   }
+// }
+
 function doGuess(){
    var user_guess = $("#user").val();
    if (user_guess.length != 5)
