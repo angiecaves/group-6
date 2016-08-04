@@ -4,7 +4,7 @@ function get_random_word(words){
     return randomElement;
 }
 
-var words_list = ['bingo','bacon','tears','dream','click','stick','right','taken','group','chair','water','store','brain',"youth",'about','mouth','house','check','break','barns','start','chase','train','choir','clash','cough','grape','melon','fruit','steak','fries','chips','badge','watch','trunk','tiger','stage'];
+var words_list = ['bingo','bacon','tears','dream','click','stick','right','taken','group','chair','water','store','brain',"youth",'about','mouth','house','check','break','barns','chase','train','choir','clash','cough','grape','melon','fruit','steak','fries','chips','badge','watch','trunk','tiger','stage'];
 
 var random_word;
 var first_in_word;
@@ -27,10 +27,6 @@ function redirect_to_winner(){
     $("#playWin").html("Correct word: " + first_round);
     window.location.replace("/winner");
 }
-/*function double_letter(str, letter){
-        x=str.replace(/[^letter]/g, "").length;
-        return x;
-}*/
 
 function compare(random_w, guess){
     var in_random=random_w.replace(/[^random_w[i]]/g, "").length;
@@ -48,7 +44,7 @@ function compare(random_w, guess){
             {
                 first_round[i]="[" + guess[i] + "]";
             }
-            else if (random_w.includes(guess[i]) == true && first_round.toString().indexOf("[" + guess[i] + "]") == -1)
+            else if (random_w.includes(guess[i]) == true)
             {
                 if (in_random >= in_guess)
                 {
@@ -60,36 +56,8 @@ function compare(random_w, guess){
         count = count -1;
         $("#boxed").html(count);
     }
+}
 
-function compare(random_w, guess){
-
-	if (random_w==guess){
-		for(i=0; i<5; i++){
-			first_round[i]="[" + guess[i] + "]";
-		}
-		redirect_to_winner();
-	}
-	else{
-		for (i=0; i<5; i++)
-		{
-			if (random_w[i]==guess[i])
-			{
-				first_round[i]="[" + guess[i] + "]";
-			}
-		    else if (random_w.includes(guess[i]) == true && first_round.toString().indexOf("[") == -1 /*&& is_double_letter(random_w,guess[i])==false*/)
-			{
-				var in_random=random_w.replace(/[^random_w[i]]/g, "").length;
-				var in_guess = guess.replace(/[^random_w[i]]/g, "").length;
-				if(in_random>=in_guess)
-				{
-					first_round[i]="("+guess[i]+")";
-				}
-			}
-		$("#output").html(first_round);
-		}
-		count = count -1;
-		$("#boxed").html(count);
-	}
 
 function doGuess(){
    var user_guess = $("#user").val();
