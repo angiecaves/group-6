@@ -52,16 +52,18 @@ function compare(random_w, guess){
         for (i=0; i<5; i++)
         {
             var guessed_letter = guess[i];
-            if (random_w[i]==guessed_letter)
+            if (random_w[i]== guessed_letter )
             {
-                first_round[i]=guessed_letter;
+                first_round[i]="["+guessed_letter+"]";
             }
-            else if (in_word(random_w,guessed_letter) > in_word(first_round,guessed_letter))
+            else if (in_word(random_w,guessed_letter) > in_word(first_round, "("+guessed_letter+")"))
             {
                 first_round[i]="("+guessed_letter+")";
             }
-         $("#output").html(first_round);
-
+            else
+            {
+              first_round[i]=guessed_letter;
+            }
 
         }
         count = count -1;
@@ -77,15 +79,16 @@ function doGuess(){
    }
    else
    {
-      $("#failure").append("<br>" + user_guess);
+      // $("#failure").append("<br>" + user_guess);
       // $("#output").html(user_guess)
+
       compare(random_word,user_guess);
-      
+      $("#failure").append("<br>" + first_round.join(""));
    }
 
    if (count < 1)
    {
-     alert("YOU LOSE the correct word was: " + random_word );
+     alert("YOU LOSE! The correct word was: " + random_word );
      window.location.reload();
    }
 }
